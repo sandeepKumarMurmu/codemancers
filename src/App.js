@@ -1,8 +1,10 @@
 import { Tags } from "./components/tag/tag";
+import { Navbar } from "./components/navbar/navbar";
 function App() {
   return (
     <div className="App">
-      <Tags />
+      <Navbar />
+      {/* <Tags /> */}
     </div>
   );
 }

@@ -1,0 +1,11 @@
+.inputGeneral {
+  height: 58%;
+  border-radius: 20px;
+  padding: 2px 0 0 20px;
+  outline: none;
+  border: none;
+  background-color: rgb(211, 214, 217);
+}
+.inputGeneral:focus {
+  outline: none;
+}

@@ -23,7 +23,9 @@ export const Row2 = () => {
       </div>
       <div className="row2_child2"></div>
       <div className="row2_child1 ">
-        <div className="row2_grandChild1"></div>
+        <div className="row2_grandChild1">
+          
+        </div>
         <Operation data={row2ContactIconData} />
       </div>
     </div>

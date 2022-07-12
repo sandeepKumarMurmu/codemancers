@@ -1,8 +1,8 @@
-import { Avatar } from "./components/avatar/avatar";
+import { Tags } from "./components/tag/tag";
 function App() {
   return (
     <div className="App">
-      <Avatar />
+      <Tags />
     </div>
   );
 }

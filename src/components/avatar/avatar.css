@@ -1,0 +1,10 @@
+.avatarContainer {
+  height: 30px;
+  width: 30px;
+}
+
+.avatarContainer img {
+  width: 100%;
+  width: 100%;
+  border-radius: 40px;
+}

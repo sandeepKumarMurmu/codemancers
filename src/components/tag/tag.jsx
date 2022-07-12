@@ -5,14 +5,14 @@ import "./tag.css";
 import { Avatar } from "../avatar/avatar";
 
 // Tag componet to be exported
-export const Tags = () => {
+export const Tags = ({ url, title }) => {
   return (
     <div className="tagContainer">
       <div className="tagChild_1">
-        <Avatar />
+        <Avatar url={url} />
       </div>
       <div className="tagChild_2">
-        <p>Operation</p>
+        <p>{title}</p>
       </div>
     </div>
   );

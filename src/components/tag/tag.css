@@ -1,11 +1,11 @@
 .tagContainer {
   margin: 0;
   width: 95%;
+  padding: 3px 0px 3px 0px;
   display: flex;
   flex-direction: row;
   align-items: center;
   padding-left: 1vw;
-  border: 1px solid green;
   height: 5vh;
   column-gap: 8px;
   font-weight: bold;
@@ -13,5 +13,5 @@
 }
 
 .tagContainer:hover {
-  background-color: rgb(217, 212, 212);
+  background-color: #b6b9bd;
 }

@@ -1,0 +1,19 @@
+.createPost {
+  cursor: pointer;
+  /* margin-top: 4px; */
+  width: 99.2%;
+  background-color: white;
+  display: flex;
+  flex-direction: row;
+  padding: 4px;
+  justify-content: center;
+}
+.createPost input {
+  padding-left: 20px;
+  width: 66%;
+  outline: none;
+  border: none;
+  background-color: rgb(200, 198, 198);
+  border-radius: 20px;
+  font-size: 15px;
+}

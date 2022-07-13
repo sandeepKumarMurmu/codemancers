@@ -6,15 +6,13 @@ import { CancelIcon } from "../cancelIcon/cancelIcon";
 import { Color } from "../colors/color";
 import { Tags } from "../tag/tag";
 import "./post.css";
-// <i class="fa-solid fa-ellipsis"></i>
+
 // card component
-export const PostCard = () => {
+export const PostCard = ({ SetPostState, postState }) => {
   const [colorState, setColorState] = useState(false);
   const [index, setIndex] = useState(0);
   const [timeOut, setTimeOut] = useState();
-  const [gifData, setGifData] = useState([
-    "https://media1.tenor.co/images/ca634ce4ea0cf0093bd8f9d3f1344eec/tenor.gif?c=VjFfZmFjZWJvb2tfd2ViY29tbWVudHM&itemid=20049821",
-  ]);
+  const [gifData, setGifData] = useState([]);
   const [displayGif, setDisplayGif] = useState({
     status: false,
     url: "",
@@ -52,8 +50,16 @@ export const PostCard = () => {
     clearTimeout(timeOut);
 
     const timeOutId = setTimeout(() => {
-      // axios.get().then(({ data }) => {});
-      // console.log(e.target.value);
+      axios
+        .get(
+          `https://api.giphy.com/v1/gifs/search?api_key=RX3lk5SbRAYqwj7xc2MrKSRztJKqjtsg&q=${e.target.value}&limit=10`
+        )
+        .then(({ data }) => {
+          setGifData([...data.data]);
+        })
+        .catch((e) => {
+          console.log(e);
+        });
     }, 500);
     setTimeOut(timeOutId);
   }
@@ -71,7 +77,18 @@ export const PostCard = () => {
           ""
         )}
         <p>{PageName[index]}</p>
-        {!index ? <CancelIcon name={"fa-solid fa-xmark"} /> : ""}
+        {!index ? (
+          <div
+            onClick={() => {
+              SetPostState(!postState);
+            }}
+          >
+            {" "}
+            <CancelIcon name={"fa-solid fa-xmark"} />{" "}
+          </div>
+        ) : (
+          ""
+        )}
       </div>
       <hr />
       {index == 0 ? (
@@ -130,7 +147,14 @@ export const PostCard = () => {
               ))}
             </div>
           </div>
-          <button className="postButton">Post</button>
+          <button
+            className="postButton"
+            onClick={() => {
+              SetPostState(!postState);
+            }}
+          >
+            Post
+          </button>
         </div>
       ) : index === 1 ? (
         <div className="containerPostBody gridDisplay">
@@ -166,11 +190,11 @@ export const PostCard = () => {
               <div
                 className="gifCard"
                 onClick={() => {
-                  setDisplayGif({ status: true, url: ele });
+                  setDisplayGif({ status: true, url: ele.images.original.url });
                   setIndex(0);
                 }}
               >
-                <img src={ele} alt="" />
+                <img src={ele.images.original.url} alt="" />
               </div>
             ))}
           </div>

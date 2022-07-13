@@ -38,8 +38,7 @@
   width: 98%;
 }
 .inputContainer textarea {
-  font-size: 20px;
-  height: 10vh;
+  font-size: 18px;
   width: 98.5%;
   outline: none;
   border: none;
@@ -124,4 +123,19 @@
 }
 .gifCard img {
   width: 98%;
+}
+
+.finalGifContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  height: 20vh;
+  align-items: center;
+  background-color: rgb(199, 196, 196);
+}
+.finalGifContainer img {
+  height: 88%;
+}
+.cross_img {
+  margin-top: -125px;
 }

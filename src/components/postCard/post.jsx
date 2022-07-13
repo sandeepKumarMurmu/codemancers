@@ -10,7 +10,10 @@ import "./post.css";
 export const PostCard = () => {
   const [colorState, setColorState] = useState(false);
   const [index, setIndex] = useState(0);
-  const [display, setDisplay] = useState(true);
+  const [displayGif, setDisplayGif] = useState({
+    status: false,
+    url: "",
+  });
   const PageName = ["Create Post", "Add to your post", "Choose a GIF"];
   const iconClass = [
     "fa-solid fa-ellipsis",
@@ -66,10 +69,23 @@ export const PostCard = () => {
               name=""
               id=""
               cols="30"
-              rows="10"
+              rows="3"
               placeholder="Whats Up Sandeep Kumar Murmu"
             ></textarea>
           </div>
+          {displayGif.status && (
+            <div className="finalGifContainer">
+              <img src="" alt="" />
+              <div
+                className="cross_img"
+                onClick={() => {
+                  setDisplayGif({ status: false, url: "" });
+                }}
+              >
+                <CancelIcon name={"fa-solid fa-xmark"} />
+              </div>
+            </div>
+          )}
           <div className="colorContainer">
             {colorState && colorData.map((ele) => <Color color={ele} />)}
             <div

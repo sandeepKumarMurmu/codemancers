@@ -1,6 +1,7 @@
 // importing css file
 import { useState } from "react";
-import { Avatar } from "../avatar/avatar";
+import axios from "axios";
+
 import { CancelIcon } from "../cancelIcon/cancelIcon";
 import { Color } from "../colors/color";
 import { Tags } from "../tag/tag";
@@ -10,6 +11,10 @@ import "./post.css";
 export const PostCard = () => {
   const [colorState, setColorState] = useState(false);
   const [index, setIndex] = useState(0);
+  const [timeOut, setTimeOut] = useState();
+  const [gifData, setGifData] = useState([
+    "https://media1.tenor.co/images/ca634ce4ea0cf0093bd8f9d3f1344eec/tenor.gif?c=VjFfZmFjZWJvb2tfd2ViY29tbWVudHM&itemid=20049821",
+  ]);
   const [displayGif, setDisplayGif] = useState({
     status: false,
     url: "",
@@ -43,6 +48,15 @@ export const PostCard = () => {
   function handelColor() {
     setColorState(!colorState);
   }
+  function handelChange(e) {
+    clearTimeout(timeOut);
+
+    const timeOutId = setTimeout(() => {
+      // axios.get().then(({ data }) => {});
+      // console.log(e.target.value);
+    }, 500);
+    setTimeOut(timeOutId);
+  }
   return (
     <div className="postContainer">
       <div className="title1">
@@ -75,7 +89,7 @@ export const PostCard = () => {
           </div>
           {displayGif.status && (
             <div className="finalGifContainer">
-              <img src="" alt="" />
+              <img src={displayGif.url} alt="" />
               <div
                 className="cross_img"
                 onClick={() => {
@@ -139,15 +153,26 @@ export const PostCard = () => {
         <div className="containerPostBody">
           <div className="gifSearchBox">
             <i className="fa-solid fa-magnifying-glass"></i>
-            <input type="text" placeholder="Search" />
+            <input
+              type="text"
+              placeholder="Search"
+              onChange={(e) => {
+                handelChange(e);
+              }}
+            />
           </div>
           <div className="searchResult">
-            <div className="gifCard">
-              <img
-                src="https://media1.tenor.co/images/ca634ce4ea0cf0093bd8f9d3f1344eec/tenor.gif?c=VjFfZmFjZWJvb2tfd2ViY29tbWVudHM&itemid=20049821"
-                alt=""
-              />
-            </div>
+            {gifData.map((ele) => (
+              <div
+                className="gifCard"
+                onClick={() => {
+                  setDisplayGif({ status: true, url: ele });
+                  setIndex(0);
+                }}
+              >
+                <img src={ele} alt="" />
+              </div>
+            ))}
           </div>
         </div>
       )}

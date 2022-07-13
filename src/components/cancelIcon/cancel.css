@@ -1,0 +1,13 @@
+.cross {
+  display: flex;
+
+  border-radius: 20px;
+  background-color: rgb(134, 135, 135);
+  height: 30px;
+  width: 30px;
+  align-items: center;
+}
+.cross i {
+  width: 100%;
+  text-align: center;
+}
